@@ -29,7 +29,10 @@ let info = `Phonebook has info for ${persons.length} people`
 let time = `${Date.now()}`
 
 app.get('/info', (request, response) => {
-  response.send(`Phonebook has info for ${persons.length} people.<br>${Date(Date.now())}`)
+  response.send(`
+  <p>Phonebook has info for ${persons.length} people.</p>
+  <p>${Date(Date.now())}<p>
+  `)
 })
 
 app.get('/api/persons', (request, response) => {
