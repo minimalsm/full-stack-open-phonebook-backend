@@ -19,7 +19,7 @@ app.use(
       '-',
       tokens['response-time'](req, res), 
       'ms',
-      tokens["post-body"](req, res)
+      tokens["post-body"](req, res),
     ].join(' ')
   })
 )
