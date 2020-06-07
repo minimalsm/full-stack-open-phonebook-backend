@@ -25,6 +25,13 @@ app.get('/', (request, response) => {
   response.send('<h1>Hello World!</h1>')
 })
 
+let info = `Phonebook has info for ${persons.length} people`
+let time = `${Date.now()}`
+
+app.get('/info', (request, response) => {
+  response.send(`Phonebook has info for ${persons.length} people.<br>${Date(Date.now())}`)
+})
+
 app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
