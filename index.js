@@ -26,7 +26,6 @@ app.get('/', (request, response) => {
 })
 
 let info = `Phonebook has info for ${persons.length} people`
-let time = `${Date.now()}`
 
 app.get('/info', (request, response) => {
   response.send(`
