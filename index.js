@@ -30,12 +30,15 @@ app.use(
   })
 )
 
-// app.get('/info', (request, response) => {
-//   response.send(`
-//   <p>Phonebook has info for ${persons.length} people.</p>
-//   <p>${Date(Date.now())}<p>
-//   `)
-// })
+app.get('/info', (request, response) => {
+  Person.find({}).then(persons => {
+    response.send(`
+    <p>Phonebook has info for ${persons.length} people.</p>
+    <p>${Date(Date.now())}<p>
+    `)
+  })
+})
+
 
 app.get('/api/persons', (request, response) => {
   Person.find({}).then(persons => {
