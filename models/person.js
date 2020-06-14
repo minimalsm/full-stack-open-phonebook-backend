@@ -16,20 +16,25 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
     console.log('error connecting to MongoDB:', error.message)
   })
 
-  const personSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      minlength: 2,
-      required: true,
-      unique: true,
-    },
-    number: {
-      type: Number,
-      required: true
-    },
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    minlength: [3, "Name must be at least 3 characters"],
+    required: true,
+    unique: true,
+  },
+  number: {
+    type: Number,
+    required: true,
     important: Boolean,
-  })
-  personSchema.plugin(uniqueValidator)
+    //Validates phonenumber is greater than 7 numbers
+    validate: {
+    validator: function(n) {
+      return n.toString().length > 7;
+    }, message: "Number must have at least 8 numbers"},
+  }
+})
+personSchema.plugin(uniqueValidator)
 
 personSchema.set('toJSON', {
   transform: (document, returnedObject) => {
